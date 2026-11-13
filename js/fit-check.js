@@ -1,10 +1,11 @@
-/* MO OS v0.9 — Fit Check only. Does not modify other modules. */
+/* MO OS v1.0 — Fit Check only. No other module uses this file. */
 (() => {
   'use strict';
   if (document.body.dataset.module !== 'outfit') return;
 
   const root = document.getElementById('module-root');
   const data = window.MO_FIT_CHECK_DATA;
+  const images = window.MO_FIT_CHECK_IMAGES || {};
   if (!root) return;
   if (!data || !Array.isArray(data.looks)) {
     root.innerHTML = '<p class="empty">Fit Check could not load its outfit data. Check js/fit-check-data.js.</p>';
@@ -14,11 +15,15 @@
   const escapeHTML = input => String(input ?? '').replace(/[&<>"']/g, char => ({
     '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
   })[char]);
-
   const options = (items, selected) => items.map(item => `<option value="${escapeHTML(item)}" ${item === selected ? 'selected' : ''}>${escapeHTML(item)}</option>`).join('');
-  const safePhoto = value => typeof value === 'string' && /^https:\/\/i\.pinimg\.com\/[a-zA-Z0-9/_-]+\.(?:jpg|jpeg|png|webp)(?:\?[^<>"']*)?$/i.test(value) ? value : '';
-  const safePin = value => typeof value === 'string' && /^https:\/\/(?:[a-z]{2,3}\.)?pinterest\.com\/pin\/[0-9]+\/?$/i.test(value) ? value : '';
-  const getImage = look => data.inspiration[`${look.occasion}|${look.weather}`] || {};
+
+  // Photos are trusted, hardcoded external https links from fit-check-images.js.
+  // Never accept script:, data:, embedded markup or whitespace in src values.
+  const safePhoto = value => typeof value === 'string' && /^https:\/\/[^\s<>"']+$/i.test(value) ? value : '';
+  const getImage = look => safePhoto(images[look.id] || look.image || '');
+  const pinterestSearch = look => 'https://www.pinterest.com/search/pins/?q=' + encodeURIComponent(
+    `${look.occasion} ${look.weather} mens style ${look.title} ${look.top} ${look.bottom}`
+  );
   const $ = id => document.getElementById(id);
   let selected = null;
   let lastId = null;
@@ -30,7 +35,7 @@
         <div class="field"><label for="fit-occasion">Occasion</label><select id="fit-occasion">${options(data.occasions, 'Casual')}</select></div>
         <div class="field"><label for="fit-weather">Dressing for</label><select id="fit-weather">${options(data.weather, 'Warm')}</select></div>
       </div>
-      <p class="note">Pick a vibe and temperature. These are outfit ideas, not a record of what you own. Hot / Warm / Cold are clothing choices, not a live forecast.</p>
+      <p class="note">Pick a vibe and temperature. These are outfit ideas, not a record of what you own. Hot / Warm / Cold describe what to wear, not the live forecast.</p>
     </section>
     <section class="panel panel-glow fit-feature-panel">
       <div id="fit-result" aria-live="polite"></div>
@@ -40,23 +45,24 @@
     </section>
     <div class="section-heading fit-heading"><h2>Pick a look.</h2><span id="fit-count" class="muted small"></span></div>
     <div id="fit-grid" class="card-grid fit-grid"></div>
-    <p class="note fit-footer-note">Pinterest photos are inspiration for the selected occasion and temperature. They may not depict every item in the breakdown. Photos load from Pinterest, so an image may occasionally be unavailable.</p>`;
+    <p class="note fit-footer-note">75 different visual references for 75 outfit ideas. Photos show the styling direction, not an exact guarantee of every listed item. Images load from external sites and some may be unavailable.</p>`;
 
   function filtered() {
     return data.looks.filter(look => look.occasion === $('fit-occasion').value && look.weather === $('fit-weather').value);
   }
 
   function mediaHTML(look) {
-    const inspo = getImage(look);
-    const image = safePhoto(look.image || inspo.image);
-    const pin = safePin(look.pin || inspo.pin);
+    const image = getImage(look);
+    const pinterest = pinterestSearch(look);
     const imageHTML = image
-      ? `<img class="fit-photo" src="${escapeHTML(image)}" alt="Pinterest outfit styling inspiration: ${escapeHTML(inspo.description || look.title)}" loading="eager" referrerpolicy="no-referrer" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-         <div class="fit-image-fallback" hidden><span>📌</span><strong>Image unavailable</strong><small>Try the source Pin below.</small></div>`
-      : `<div class="fit-image-fallback"><span>📌</span><strong>Image not set</strong></div>`;
+      ? `<img class="fit-photo" src="${escapeHTML(image)}" alt="Outfit photo inspiration for ${escapeHTML(look.title)}" loading="eager" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+         <div class="fit-image-fallback" hidden><span>📌</span><strong>Photo unavailable</strong><small>See similar outfit inspiration on Pinterest below.</small></div>`
+      : `<div class="fit-image-fallback"><span>📌</span><strong>Photo not set</strong><small>Try Pinterest inspiration below.</small></div>`;
     return `<div class="fit-media">${imageHTML}
-      <div class="fit-media-caption"><span>PINTEREST INSPO · ${escapeHTML(look.occasion.toUpperCase())} / ${escapeHTML(look.weather.toUpperCase())}</span>
-      ${pin ? `<a href="${escapeHTML(pin)}" target="_blank" rel="noopener noreferrer" aria-label="View original Pin on Pinterest">Original Pin ↗</a>` : ''}</div></div>`;
+      <div class="fit-media-caption"><span>LOOK INSPIRATION · ${escapeHTML(look.occasion.toUpperCase())} / ${escapeHTML(look.weather.toUpperCase())}</span>
+      <span class="fit-caption-links">${image ? `<a href="${escapeHTML(image)}" target="_blank" rel="noopener noreferrer" aria-label="Open original outfit image">Photo ↗</a>` : ''}
+      <a href="${escapeHTML(pinterest)}" target="_blank" rel="noopener noreferrer" aria-label="Find similar outfits on Pinterest">Pinterest ↗</a></span>
+      </div></div>`;
   }
 
   function select(look, scroll = false) {
@@ -82,7 +88,10 @@
       button.classList.toggle('selected', isSelected);
       button.setAttribute('aria-pressed', String(isSelected));
     });
-    if (scroll) $('fit-result').scrollIntoView({behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
+    if (scroll) $('fit-result').scrollIntoView({
+      behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start'
+    });
   }
 
   function render() {
