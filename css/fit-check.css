@@ -1,0 +1,37 @@
+/* Fit Check only: layered over existing module.css, preserving MO OS styling. */
+body[data-module="outfit"] .hero{padding-bottom:24px}
+.fit-filter-panel{margin-bottom:14px}
+.fit-filter-panel .note{margin:3px 0 0}
+.fit-feature-panel{padding:14px;overflow:hidden}
+.fit-spotlight{display:grid;grid-template-columns:minmax(0,0.92fr) minmax(0,1.08fr);gap:20px;align-items:start}
+.fit-media{min-width:0;overflow:hidden;border-radius:16px;background:#171a17;border:1px solid rgba(255,255,255,.09)}
+.fit-photo{display:block;width:100%;height:310px;object-fit:contain;background:#171a17}
+.fit-image-fallback{height:310px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;color:#cbd1c6}
+.fit-image-fallback[hidden],.fit-photo[hidden]{display:none!important}
+.fit-image-fallback span{font-size:38px}
+.fit-image-fallback strong{font-size:14px}
+.fit-image-fallback small{font-size:12px;color:#aeb4aa}
+.fit-media-caption{display:flex;flex-wrap:wrap;gap:5px 12px;align-items:center;justify-content:space-between;padding:11px 12px;background:#212721;font-size:9px;line-height:1.6;letter-spacing:.1em;color:#d4caaa}
+.fit-media-caption a{font-size:11px;letter-spacing:0;text-decoration:underline;text-underline-offset:3px;color:#e0d4b5;white-space:nowrap}
+.fit-spotlight-copy{min-width:0;padding-top:3px}
+.fit-spotlight-copy h2{font-size:27px;line-height:1.18;margin:8px 0 8px}
+.fit-styling-note{margin:0 0 13px!important;color:#e0e4d8;line-height:1.5;font-size:13px}
+.fit-spotlight-copy .wardrobe-detail{background:rgba(15,22,17,.34);border:1px solid rgba(255,255,255,.10);border-radius:15px;padding:12px}
+.fit-spotlight-copy .wardrobe-detail dl{margin:0;display:grid;grid-template-columns:72px 1fr;gap:8px 9px;font-size:12px;line-height:1.45}
+.fit-spotlight-copy .wardrobe-detail dt{color:#cabe99;font-weight:750}
+.fit-spotlight-copy .wardrobe-detail dd{color:#f4f2e9}
+.fit-actions{margin:12px 2px 0}
+.fit-actions .btn{width:100%;font-size:14px;min-height:48px}
+.fit-heading{margin-top:30px}
+.fit-choice{min-height:128px;gap:3px;transition:border-color .14s ease,background .14s ease;background:#252b25}
+.fit-choice.selected{border-color:#cabe99;background:#30382e}
+.fit-choice-top{display:flex;justify-content:space-between;align-items:center;padding:12px 12px 0;color:#cabe99}
+.fit-choice-number{font-size:10px;letter-spacing:.15em;font-weight:750}
+.fit-choice-arrow{font-size:14px;opacity:.75}
+.fit-choice .copy{padding:4px 12px 14px;gap:7px}
+.fit-choice .desc{color:#adb8ab}
+.fit-choice .meta{margin-top:auto;font-size:10px}
+.fit-footer-note{margin:10px 0 0}
+@media(max-width:560px){.fit-spotlight{display:block}.fit-media{margin-bottom:14px}.fit-photo,.fit-image-fallback{height:min(88vw,405px)}.fit-spotlight-copy h2{font-size:25px}.fit-spotlight-copy .wardrobe-detail dl{font-size:13px;grid-template-columns:85px 1fr;gap:9px 10px}.fit-feature-panel{padding:12px}}
+@media(max-width:380px){.fit-choice{min-height:145px}.fit-choice .name{font-size:14px}.fit-choice .desc{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.fit-choice{transition:none}}
