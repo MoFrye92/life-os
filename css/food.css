@@ -1,0 +1,458 @@
+
+/* ======================================
+   MO OS | WHAT'S TO EAT?
+   Food Menu Styling
+====================================== */
+
+:root {
+  color-scheme: dark;
+
+  --background: #121312;
+  --surface: #242925;
+  --surface-light: #2c332d;
+
+  --text: #f4efe7;
+  --muted: #aaa9a1;
+
+  --olive: #a5b797;
+  --gold: #c2b58b;
+  --terracotta: #b9745b;
+
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+
+  background: var(--background);
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button,
+a,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.food-app {
+  width: min(100%, 520px);
+  min-height: 100vh;
+  margin: auto;
+  padding: 24px 18px 35px;
+}
+
+/* HEADER */
+
+.food-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-link {
+  color: var(--olive);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wordmark {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* HERO */
+
+.food-hero {
+  margin-top: 50px;
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0 0 14px;
+  font-size: clamp(38px, 9vw, 50px);
+  line-height: 1.05;
+  letter-spacing: -2px;
+}
+
+.accent {
+  color: var(--terracotta);
+}
+
+.hero-description {
+  max-width: 350px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* BREAKFAST / LUNCH / DINNER TABS */
+
+.meal-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
+
+  padding: 5px;
+  background: #252a26;
+  border-radius: 18px;
+}
+
+.meal-tab {
+  min-width: 0;
+  min-height: 45px;
+
+  padding: 10px 4px;
+  border: none;
+  border-radius: 14px;
+
+  color: var(--muted);
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.meal-tab.is-active {
+  background: #596b52;
+  color: white;
+}
+
+/* MENU HEADING */
+
+.menu-section {
+  margin-top: 36px;
+}
+
+.menu-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.menu-heading h2 {
+  margin: 0;
+  font-size: 25px;
+  letter-spacing: -0.5px;
+}
+
+.meal-count {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+/* COOKING TIME FILTER */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+
+  margin-bottom: 20px;
+  padding: 12px 14px;
+
+  background: #202521;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+
+.filter-bar label {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.filter-bar select {
+  min-width: 0;
+  max-width: 60%;
+  padding: 7px 10px;
+
+  color: var(--text);
+  background: #303a31;
+  border: 1px solid #485349;
+  border-radius: 10px;
+
+  font-size: 12px;
+}
+
+/* FOOD GRID */
+
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* FOOD CARD */
+
+.food-card {
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+  padding: 0;
+
+  background: var(--surface);
+  color: var(--text);
+
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.food-card:hover {
+  border-color: var(--olive);
+}
+
+.food-card:active {
+  transform: scale(0.98);
+}
+
+.food-photo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+  background: #3c4437;
+}
+
+.photo-fallback {
+  font-size: 48px;
+}
+
+.food-photo img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.food-card-copy {
+  flex: 1;
+  padding: 14px 12px 17px;
+}
+
+.food-name {
+  margin: 0 0 9px;
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.food-time {
+  margin: 0 0 10px;
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.food-ingredients {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
+/* NO MATCHING MEALS */
+
+.empty-state {
+  grid-column: 1 / -1;
+
+  padding: 35px 20px;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* RECIPE DIALOG */
+
+.recipe-dialog {
+  position: fixed;
+  inset: auto 0 0;
+
+  width: min(100%, 520px);
+  max-width: 100%;
+  max-height: 88vh;
+  max-height: 88dvh;
+
+  margin: 0 auto;
+  padding: 18px 20px calc(30px + env(safe-area-inset-bottom));
+
+  background: #202621;
+  color: var(--text);
+
+  border: 1px solid #485548;
+  border-radius: 26px 26px 0 0;
+
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.recipe-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+.close-recipe {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+
+  display: block;
+  margin: 0 0 12px auto;
+
+  width: 38px;
+  height: 38px;
+
+  background: #39423a;
+  color: white;
+
+  border: 1px solid #59675b;
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+.recipe-dialog .food-photo {
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.recipe-dialog h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.recipe-dialog h3 {
+  margin: 25px 0 10px;
+  font-size: 17px;
+}
+
+.recipe-meta {
+  margin: 0;
+  color: var(--gold);
+  font-size: 13px;
+}
+
+.recipe-dialog ul,
+.recipe-dialog ol {
+  margin: 0;
+  padding-left: 22px;
+
+  color: #dddcd4;
+  line-height: 1.75;
+  font-size: 14px;
+}
+
+.recipe-dialog li {
+  margin-bottom: 9px;
+}
+
+.photo-credit {
+  margin-top: 26px;
+}
+
+.photo-credit a {
+  color: var(--muted);
+  font-size: 11px;
+  text-decoration: underline;
+}
+
+.food-footer {
+  margin-top: 48px;
+  padding-bottom: 10px;
+
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+/* SMALLER IPHONES */
+
+@media (max-width: 350px) {
+  .food-grid {
+    gap: 9px;
+  }
+
+  .food-card-copy {
+    padding: 12px 9px;
+  }
+
+  .food-name {
+    font-size: 13px;
+  }
+
+  .meal-tab {
+    font-size: 11px;
+  }
+}
+
+/* REDUCED MOTION */
+
+@media (prefers-reduced-motion: reduce) {
+  .food-card {
+    transition: none;
+  }
+}

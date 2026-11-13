@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <meta name="theme-color" content="#121312">
+
+  <title>Where We Eating? | MO OS</title>
+
+  <link
+    rel="stylesheet"
+    href="../css/eating-out.css"
+  >
+
+  <script
+    src="../js/eating-out-data.js"
+    defer
+  ></script>
+
+  <script
+    src="../js/eating-out.js"
+    defer
+  ></script>
+</head>
+
+<body>
+
+  <main class="eat-app">
+
+    <!-- HEADER -->
+    <header class="topbar">
+
+      <a href="../index.html" class="back-link">
+        ← MO OS
+      </a>
+
+      <span class="brand">MO OS.</span>
+
+    </header>
+
+
+    <!-- INTRO -->
+    <section class="hero">
+
+      <p class="eyebrow">MO OS / EAT</p>
+
+      <h1>
+        Where We Eating<span class="accent">?</span>
+      </h1>
+
+      <p class="subtitle">
+        Because "I don't know" isn't a cuisine.
+      </p>
+
+    </section>
+
+
+    <!-- DINING STYLE -->
+    <section class="dining-section">
+
+      <h2>What's the plan?</h2>
+
+      <p class="section-note">
+        Choose how you want to eat.
+      </p>
+
+      <div class="dining-options" role="group"
+           aria-label="Dining style">
+
+        <button
+          class="dining-option is-active"
+          data-mode="sit-down"
+          aria-pressed="true"
+          type="button"
+        >
+          🍽️ Sit down
+        </button>
+
+        <button
+          class="dining-option"
+          data-mode="takeout"
+          aria-pressed="false"
+          type="button"
+        >
+          🥡 Takeout
+        </button>
+
+        <button
+          class="dining-option"
+          data-mode="delivery"
+          aria-pressed="false"
+          type="button"
+        >
+          🛵 Delivery
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- RANDOMIZER -->
+    <section class="result-card"
+             aria-label="Cuisine suggestion">
+
+      <p class="eyebrow">THE MOVE</p>
+
+      <div class="result-icon" id="result-icon"
+           aria-hidden="true">
+        🎲
+      </div>
+
+      <h2 id="result-title">
+        What are we craving?
+      </h2>
+
+      <p id="result-description"
+         class="result-description"
+         role="status">
+        Let MO OS make the decision.
+      </p>
+
+      <button
+        id="roll-button"
+        class="roll-button"
+        type="button"
+      >
+        🎲 Pick for me
+      </button>
+
+      <a
+        id="find-spots"
+        class="find-spots"
+        href="#"
+        target="_blank"
+        rel="noopener noreferrer"
+        hidden
+      >
+        Find nearby spots ↗
+      </a>
+
+    </section>
+
+
+    <!-- BROWSE CUISINES -->
+    <section class="browse-section">
+
+      <div class="browse-heading">
+
+        <h2>Or pick your own.</h2>
+
+        <span id="cuisine-count"
+              class="cuisine-count"></span>
+
+      </div>
+
+      <p class="section-note">
+        Everything on your food mood list.
+      </p>
+
+      <!-- Generated from eating-out-data.js -->
+      <div
+        id="cuisine-grid"
+        class="cuisine-grid"
+      ></div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+      Good food. Less thinking. More living.
+    </footer>
+
+  </main>
+
+</body>
+</html>
+

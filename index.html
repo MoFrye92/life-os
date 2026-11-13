@@ -1,74 +1,327 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#111715">
+  <meta name="theme-color" content="#121312">
 
-  <title>Life OS | I'm Bored</title>
+  <title>MO OS | My Life, My Way</title>
 
+  <!-- Styles -->
   <link rel="stylesheet" href="./css/style.css">
+
+  <!-- Data -->
+  <script src="./js/activities.js" defer></script>
+  <script src="./js/menus.js" defer></script>
+
+  <!-- Application Logic -->
   <script src="./js/app.js" defer></script>
 </head>
 
 <body>
+
   <main class="app">
+
+    <!-- =========================
+         GLOBAL HEADER
+    ========================== -->
+
     <header class="topbar">
+
       <div class="brand">
-        <span class="brand-icon">✳</span>
-        <span>LIFE OS</span>
+        <span class="brand-mark"></span>
+        <span class="brand-text">MO OS</span>
       </div>
-      <span class="version">v0.1</span>
+
+      <span class="version">v0.3</span>
+
     </header>
 
-    <section class="intro">
-      <p class="eyebrow">YOUR DOWNTIME, YOUR WAY</p>
-      <h1>I'm Bored<span class="accent">.</span></h1>
-      <p class="subtitle">
-        No overthinking. Let's find something
-        that matches your energy.
-      </p>
+
+    <!-- =========================
+         HOME SCREEN
+    ========================== -->
+
+    <section id="home-screen" class="screen">
+
+      <section class="hero">
+
+        <p class="eyebrow">
+          LESS DECISIONS. MORE VIBES.
+        </p>
+
+        <h1>
+          What's the move<span class="accent">?</span>
+        </h1>
+
+        <p class="subtitle">
+          Your life. Your pace. Your little corner
+          of organized chaos.
+        </p>
+
+      </section>
+
+
+      <!-- MAIN MENU -->
+
+      <section class="module-section">
+
+        <h2>Pick your lane.</h2>
+
+        <p class="section-description">
+          What are we getting into today?
+        </p>
+
+        <!--
+          Menu cards will be generated
+          automatically from menus.js.
+
+          Groups:
+          EAT
+          VIBE
+          LIFE
+        -->
+
+        <div id="extra-menus"></div>
+
+      </section>
+
+      <!-- Temporary compatibility button.
+           Keeps existing app.js working
+           until we update it in File 4. -->
+      <button
+        id="open-bored"
+        type="button"
+        hidden
+      >
+        Open I'm Bored
+      </button>
+
     </section>
 
-    <section class="energy-section">
-      <h2>How's your energy?</h2>
-      <p class="section-description">
-        Pick whatever feels right today.
-      </p>
 
-      <div class="energy-grid">
-        <button class="energy-card low"
-                data-energy="Low"
-                aria-pressed="false">
-          <span class="emoji">🪫</span>
-          <span class="energy-name">Low</span>
-          <span class="energy-note">Rest & recharge</span>
-        </button>
+    <!-- =========================
+         I'M BORED SCREEN
+    ========================== -->
 
-        <button class="energy-card medium"
-                data-energy="Medium"
-                aria-pressed="false">
-          <span class="emoji">🔋</span>
-          <span class="energy-name">Medium</span>
-          <span class="energy-note">Create & play</span>
-        </button>
+    <section id="bored-screen" class="screen" hidden>
 
-        <button class="energy-card high"
-                data-energy="High"
-                aria-pressed="false">
-          <span class="emoji">⚡</span>
-          <span class="energy-name">High</span>
-          <span class="energy-note">Get moving</span>
-        </button>
+      <!-- Back Navigation -->
+
+      <button
+        id="back-home"
+        class="back-button"
+        type="button"
+      >
+        ← Main Menu
+      </button>
+
+
+      <!-- Introduction -->
+
+      <section class="hero hero-compact">
+
+        <p class="eyebrow">
+          NO OVERTHINKING. JUST PICK A VIBE.
+        </p>
+
+        <h1>
+          I'm Bored<span class="accent">.</span>
+        </h1>
+
+        <p class="subtitle">
+          Pick your energy and let's find
+          something worth doing.
+        </p>
+
+      </section>
+
+
+      <!-- Energy Selection -->
+
+      <section class="energy-section">
+
+        <h2>How we feeling?</h2>
+
+        <p class="section-description">
+          Be honest. Low is valid.
+        </p>
+
+
+        <div class="energy-grid">
+
+          <!-- LOW ENERGY -->
+
+          <button
+            class="energy-card low"
+            data-energy="Low"
+            aria-pressed="false"
+            type="button"
+          >
+
+            <span class="emoji">🪫</span>
+
+            <span class="energy-name">
+              Low
+            </span>
+
+            <span class="energy-note">
+              soft mode
+            </span>
+
+          </button>
+
+
+          <!-- MEDIUM ENERGY -->
+
+          <button
+            class="energy-card medium"
+            data-energy="Medium"
+            aria-pressed="false"
+            type="button"
+          >
+
+            <span class="emoji">🔋</span>
+
+            <span class="energy-name">
+              Medium
+            </span>
+
+            <span class="energy-note">
+              steady mode
+            </span>
+
+          </button>
+
+
+          <!-- HIGH ENERGY -->
+
+          <button
+            class="energy-card high"
+            data-energy="High"
+            aria-pressed="false"
+            type="button"
+          >
+
+            <span class="emoji">⚡</span>
+
+            <span class="energy-name">
+              High
+            </span>
+
+            <span class="energy-note">
+              let's do stuff
+            </span>
+
+          </button>
+
+        </div>
+
+
+        <!-- Activity Suggestion -->
+
+        <div class="suggestion-card">
+
+          <p class="suggestion-label">
+            TODAY'S MOVE
+          </p>
+
+          <p
+            id="selection"
+            class="selection"
+            role="status"
+          >
+            Choose an energy level to begin.
+          </p>
+
+          <button
+            id="reroll-button"
+            class="reroll-button"
+            type="button"
+            hidden
+          >
+            🎲 Try another
+          </button>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =========================
+         SHARED MENU SCREEN
+    ========================== -->
+
+    <section id="module-screen" class="screen" hidden>
+
+      <!-- Back Navigation -->
+
+      <button
+        id="module-back"
+        class="back-button"
+        type="button"
+      >
+        ← Main Menu
+      </button>
+
+
+      <!-- Menu Header -->
+
+      <section class="hero hero-compact">
+
+        <p
+          id="module-label"
+          class="eyebrow"
+        >
+          MO OS
+        </p>
+
+        <h1 id="module-title">
+          Your Menu
+        </h1>
+
+        <p
+          id="module-description"
+          class="subtitle"
+        ></p>
+
+      </section>
+
+
+      <!-- Menu Content -->
+
+      <div
+        id="module-content"
+        class="module-landing"
+      >
+
+        <p class="suggestion-label">
+          YOUR SPACE
+        </p>
+
+        <p>
+          We're getting this one ready.
+          More good stuff coming.
+        </p>
+
       </div>
 
-      <p id="selection" class="selection" role="status">
-        Choose an energy level to begin.
-      </p>
     </section>
 
-    <footer>Made for my brain. Built by me. ✳</footer>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+      Built by Mo. For real life.
+    </footer>
+
   </main>
+
 </body>
 </html>

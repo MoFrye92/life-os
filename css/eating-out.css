@@ -1,0 +1,391 @@
+
+/* ======================================
+   MO OS | WHERE WE EATING?
+   Version 0.5
+====================================== */
+
+:root {
+  color-scheme: dark;
+
+  --background: #121312;
+  --surface: #242925;
+  --surface-light: #2c332d;
+
+  --text: #f4efe7;
+  --muted: #aaa9a1;
+  --olive: #a5b797;
+  --gold: #c2b58b;
+  --terracotta: #b9745b;
+
+  --line: rgba(255, 255, 255, 0.1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--text);
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(185, 116, 91, 0.1),
+      transparent 45%
+    ),
+    var(--background);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.eat-app {
+  width: min(100%, 520px);
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: auto;
+  padding: 24px 18px 35px;
+}
+
+/* HEADER */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.back-link {
+  color: var(--olive);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.brand {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* HERO */
+
+.hero {
+  margin-top: 48px;
+  margin-bottom: 38px;
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--gold);
+
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0 0 14px;
+  font-size: clamp(38px, 9vw, 52px);
+  line-height: 1.04;
+  letter-spacing: -2px;
+}
+
+.accent {
+  color: var(--terracotta);
+}
+
+.subtitle,
+.section-note {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+h2 {
+  margin: 0 0 8px;
+  font-size: 21px;
+  letter-spacing: -0.5px;
+}
+
+/* DINING STYLE */
+
+.dining-section {
+  margin-bottom: 26px;
+}
+
+.section-note {
+  margin: 0 0 16px;
+}
+
+.dining-options {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dining-option {
+  min-width: 0;
+  min-height: 50px;
+  padding: 12px 4px;
+
+  background: #282d29;
+  border: 1px solid #414641;
+  border-radius: 15px;
+
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.dining-option.is-active {
+  background: #596b52;
+  border-color: var(--olive);
+  color: white;
+}
+
+/* RANDOMIZER */
+
+.result-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 30px 20px;
+  min-height: 280px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(165, 183, 151, 0.08),
+      rgba(185, 116, 91, 0.07)
+    ),
+    var(--surface);
+
+  border: 1px solid #495448;
+  border-radius: 26px;
+  text-align: center;
+}
+
+.result-icon {
+  display: grid;
+  place-items: center;
+
+  width: 78px;
+  height: 78px;
+
+  margin: 10px 0 16px;
+  background: #394338;
+  border-radius: 23px;
+
+  font-size: 42px;
+}
+
+.result-card h2 {
+  margin: 0 0 8px;
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.result-description {
+  margin: 0 0 22px;
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.roll-button {
+  width: 100%;
+  min-height: 48px;
+  padding: 12px 20px;
+
+  background: #657554;
+  color: white;
+
+  border: 1px solid #849675;
+  border-radius: 15px;
+
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.roll-button:active {
+  transform: scale(0.98);
+}
+
+.find-spots {
+  display: block;
+  width: 100%;
+
+  margin-top: 10px;
+  padding: 14px;
+
+  background: #333b34;
+  border: 1px solid #536153;
+  border-radius: 15px;
+
+  color: var(--text);
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* CUISINE LIST */
+
+.browse-section {
+  margin-top: 42px;
+}
+
+.browse-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.cuisine-count {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.cuisine-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cuisine-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.cuisine-card:hover,
+.cuisine-card.is-selected {
+  border-color: var(--accent-color, var(--olive));
+}
+
+.cuisine-card:active {
+  transform: scale(0.97);
+}
+
+/* Photo or emoji artwork */
+
+.cuisine-visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+
+  width: 100%;
+  aspect-ratio: 5 / 3;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--accent-color, #657554),
+      #30372e
+    );
+
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.cuisine-emoji {
+  font-size: 39px;
+}
+
+.cuisine-visual img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cuisine-name {
+  padding: 0 3px 7px;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.empty-message {
+  grid-column: 1 / -1;
+  padding: 24px;
+  color: var(--muted);
+  text-align: center;
+}
+
+/* FOOTER */
+
+footer {
+  margin-top: 52px;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+@media (max-width: 350px) {
+  .dining-option {
+    font-size: 11px;
+  }
+
+  .cuisine-grid {
+    gap: 9px;
+  }
+
+  .cuisine-name {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cuisine-card {
+    transition: none;
+  }
+}

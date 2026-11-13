@@ -1,0 +1,1054 @@
+/* ======================================
+   MO OS | DESIGN SYSTEM
+   Version 0.3
+====================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --background: #121312;
+  --surface: #1d211f;
+  --surface-2: #232927;
+  --surface-3: #28302d;
+
+  /* Typography */
+  --text: #f4efe7;
+  --muted: #a9ada6;
+  --soft: #c9c3b8;
+
+  /* Accent Colors */
+  --olive: #8d9f7b;
+  --teal: #356b6c;
+  --terracotta: #b9745b;
+  --gold: #c2b58b;
+
+  /* Borders & Shadows */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+
+  /* Corners */
+  --radius: 26px;
+  --radius-sm: 18px;
+}
+
+
+/* ======================================
+   GLOBAL
+====================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(53, 107, 108, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(180deg, #111312, #121614);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.app {
+  width: min(100%, 480px);
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: auto;
+  padding: 24px 18px 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ======================================
+   HEADER
+====================================== */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    var(--olive),
+    var(--teal),
+    var(--terracotta)
+  );
+}
+
+.brand-text {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.version {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+
+/* ======================================
+   HERO / PAGE INTRODUCTIONS
+====================================== */
+
+.hero {
+  margin-top: clamp(62px, 11vh, 110px);
+}
+
+.hero-compact {
+  margin-top: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+
+  color: var(--olive);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0 0 14px;
+
+  font-size: clamp(42px, 10vw, 56px);
+  line-height: 1;
+  letter-spacing: -2.5px;
+}
+
+.accent {
+  color: var(--terracotta);
+}
+
+.subtitle {
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.section-description {
+  margin: 0 0 20px;
+
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ======================================
+   MAIN MENU
+====================================== */
+
+.module-section {
+  margin-top: 48px;
+}
+
+/* Container for all menu groups */
+
+#extra-menus {
+  margin-top: 26px;
+}
+
+/* EAT / VIBE / LIFE Sections */
+
+.mo-menu-group {
+  margin-top: 32px;
+}
+
+.mo-menu-group:first-child {
+  margin-top: 0;
+}
+
+.mo-menu-group h3 {
+  margin: 0 0 14px;
+
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Two-column menu grid */
+
+.mo-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Individual Menu Cards */
+
+.mo-menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 138px;
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.005)
+    ),
+    var(--surface);
+
+  border: 1px solid var(--line);
+  border-radius: 22px;
+
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.mo-menu-card:hover {
+  border-color: rgba(194, 181, 139, 0.5);
+}
+
+.mo-menu-card:active {
+  transform: scale(0.97);
+}
+
+.mo-menu-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.mo-menu-icon {
+  font-size: 30px;
+}
+
+.mo-menu-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+
+/* ======================================
+   BACK NAVIGATION
+====================================== */
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+  margin-top: 20px;
+  padding: 10px 14px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--soft);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  border-color: var(--olive);
+}
+
+.back-button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+
+/* ======================================
+   I'M BORED | ENERGY CARDS
+====================================== */
+
+.energy-section {
+  margin-top: 48px;
+}
+
+.energy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.energy-card {
+  min-width: 0;
+  min-height: 164px;
+  padding: 16px 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 24px;
+  border: 1px solid transparent;
+
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.energy-card:active {
+  transform: scale(0.97);
+}
+
+.energy-card:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* Energy Colors */
+
+.low {
+  background: linear-gradient(160deg, #313d35, #27312c);
+  border-color: rgba(141, 159, 123, 0.14);
+}
+
+.medium {
+  background: linear-gradient(160deg, #234548, #1f3537);
+  border-color: rgba(53, 107, 108, 0.2);
+}
+
+.high {
+  background: linear-gradient(160deg, #5a3a30, #4b3129);
+  border-color: rgba(185, 116, 91, 0.18);
+}
+
+/* Selected Energy */
+
+.low.is-selected {
+  border-color: #dce8d0;
+}
+
+.medium.is-selected {
+  border-color: #bbd9d9;
+}
+
+.high.is-selected {
+  border-color: #f0d2c6;
+}
+
+.emoji {
+  font-size: 30px;
+}
+
+.energy-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.energy-note {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* ======================================
+   ACTIVITY SUGGESTION
+====================================== */
+
+.suggestion-card {
+  margin-top: 26px;
+  padding: 26px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(141, 159, 123, 0.1),
+      rgba(53, 107, 108, 0.08)
+    ),
+    var(--surface-2);
+
+  border: 1px solid var(--line-strong);
+  border-radius: 28px;
+  text-align: center;
+
+  box-shadow: var(--shadow);
+}
+
+.suggestion-label {
+  margin: 0 0 14px;
+
+  color: var(--olive);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.selection {
+  min-height: 32px;
+  margin: 0;
+
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+/* ======================================
+   REROLL BUTTON
+====================================== */
+
+.reroll-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  padding: 12px 20px;
+
+  background: #2b3330;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.reroll-button:hover {
+  border-color: var(--olive);
+}
+
+.reroll-button:active {
+  transform: scale(0.98);
+}
+
+.reroll-button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+
+/* ======================================
+   SHARED MODULE SCREEN
+====================================== */
+
+.module-landing {
+  margin-top: 36px;
+  padding: 28px 20px;
+
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+
+footer {
+  margin-top: auto;
+  padding-top: 44px;
+
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+
+/* ======================================
+   ACCESSIBILITY
+====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .mo-menu-card,
+  .energy-card {
+    transition: none;
+  }
+}
+
+/* ======================================
+   MO OS | DESIGN SYSTEM
+   Version 0.3
+====================================== */
+
+:root {
+  color-scheme: dark;
+
+  /* Backgrounds */
+  --background: #121312;
+  --surface: #1d211f;
+  --surface-2: #232927;
+  --surface-3: #28302d;
+
+  /* Typography */
+  --text: #f4efe7;
+  --muted: #a9ada6;
+  --soft: #c9c3b8;
+
+  /* Accent Colors */
+  --olive: #8d9f7b;
+  --teal: #356b6c;
+  --terracotta: #b9745b;
+  --gold: #c2b58b;
+
+  /* Borders & Shadows */
+  --line: rgba(255, 255, 255, 0.08);
+  --line-strong: rgba(255, 255, 255, 0.14);
+  --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+
+  /* Corners */
+  --radius: 26px;
+  --radius-sm: 18px;
+}
+
+
+/* ======================================
+   GLOBAL
+====================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(53, 107, 108, 0.12),
+      transparent 28%
+    ),
+    linear-gradient(180deg, #111312, #121614);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: transparent;
+  color: var(--text);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+button {
+  font: inherit;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.app {
+  width: min(100%, 480px);
+  min-height: 100vh;
+  min-height: 100svh;
+
+  margin: auto;
+  padding: 24px 18px 30px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ======================================
+   HEADER
+====================================== */
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    var(--olive),
+    var(--teal),
+    var(--terracotta)
+  );
+}
+
+.brand-text {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.version {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+
+/* ======================================
+   HERO / PAGE INTRODUCTIONS
+====================================== */
+
+.hero {
+  margin-top: clamp(62px, 11vh, 110px);
+}
+
+.hero-compact {
+  margin-top: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+
+  color: var(--olive);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+h1 {
+  margin: 0 0 14px;
+
+  font-size: clamp(42px, 10vw, 56px);
+  line-height: 1;
+  letter-spacing: -2.5px;
+}
+
+.accent {
+  color: var(--terracotta);
+}
+
+.subtitle {
+  max-width: 340px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h2 {
+  margin: 0 0 6px;
+  font-size: 24px;
+  letter-spacing: -0.5px;
+}
+
+.section-description {
+  margin: 0 0 20px;
+
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+
+/* ======================================
+   MAIN MENU
+====================================== */
+
+.module-section {
+  margin-top: 48px;
+}
+
+/* Container for all menu groups */
+
+#extra-menus {
+  margin-top: 26px;
+}
+
+/* EAT / VIBE / LIFE Sections */
+
+.mo-menu-group {
+  margin-top: 32px;
+}
+
+.mo-menu-group:first-child {
+  margin-top: 0;
+}
+
+.mo-menu-group h3 {
+  margin: 0 0 14px;
+
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* Two-column menu grid */
+
+.mo-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Individual Menu Cards */
+
+.mo-menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  width: 100%;
+  min-height: 138px;
+  padding: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.005)
+    ),
+    var(--surface);
+
+  border: 1px solid var(--line);
+  border-radius: 22px;
+
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+
+  box-shadow: var(--shadow);
+
+  transition:
+    transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.mo-menu-card:hover {
+  border-color: rgba(194, 181, 139, 0.5);
+}
+
+.mo-menu-card:active {
+  transform: scale(0.97);
+}
+
+.mo-menu-card:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.mo-menu-icon {
+  font-size: 30px;
+}
+
+.mo-menu-title {
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+
+/* ======================================
+   BACK NAVIGATION
+====================================== */
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+
+  width: fit-content;
+  margin-top: 20px;
+  padding: 10px 14px;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+
+  color: var(--soft);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.back-button:hover {
+  border-color: var(--olive);
+}
+
+.back-button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+
+/* ======================================
+   I'M BORED | ENERGY CARDS
+====================================== */
+
+.energy-section {
+  margin-top: 48px;
+}
+
+.energy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.energy-card {
+  min-width: 0;
+  min-height: 164px;
+  padding: 16px 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 24px;
+  border: 1px solid transparent;
+
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: var(--shadow);
+
+  transition: transform 0.15s, border-color 0.15s;
+}
+
+.energy-card:active {
+  transform: scale(0.97);
+}
+
+.energy-card:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 3px;
+}
+
+/* Energy Colors */
+
+.low {
+  background: linear-gradient(160deg, #313d35, #27312c);
+  border-color: rgba(141, 159, 123, 0.14);
+}
+
+.medium {
+  background: linear-gradient(160deg, #234548, #1f3537);
+  border-color: rgba(53, 107, 108, 0.2);
+}
+
+.high {
+  background: linear-gradient(160deg, #5a3a30, #4b3129);
+  border-color: rgba(185, 116, 91, 0.18);
+}
+
+/* Selected Energy */
+
+.low.is-selected {
+  border-color: #dce8d0;
+}
+
+.medium.is-selected {
+  border-color: #bbd9d9;
+}
+
+.high.is-selected {
+  border-color: #f0d2c6;
+}
+
+.emoji {
+  font-size: 30px;
+}
+
+.energy-name {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.energy-note {
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+/* ======================================
+   ACTIVITY SUGGESTION
+====================================== */
+
+.suggestion-card {
+  margin-top: 26px;
+  padding: 26px 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(141, 159, 123, 0.1),
+      rgba(53, 107, 108, 0.08)
+    ),
+    var(--surface-2);
+
+  border: 1px solid var(--line-strong);
+  border-radius: 28px;
+  text-align: center;
+
+  box-shadow: var(--shadow);
+}
+
+.suggestion-label {
+  margin: 0 0 14px;
+
+  color: var(--olive);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.selection {
+  min-height: 32px;
+  margin: 0;
+
+  color: var(--text);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+
+/* ======================================
+   REROLL BUTTON
+====================================== */
+
+.reroll-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 20px;
+  padding: 12px 20px;
+
+  background: #2b3330;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.reroll-button:hover {
+  border-color: var(--olive);
+}
+
+.reroll-button:active {
+  transform: scale(0.98);
+}
+
+.reroll-button:focus-visible {
+  outline: 2px solid var(--olive);
+  outline-offset: 3px;
+}
+
+
+/* ======================================
+   SHARED MODULE SCREEN
+====================================== */
+
+.module-landing {
+  margin-top: 36px;
+  padding: 28px 20px;
+
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+
+  color: var(--muted);
+  line-height: 1.6;
+  text-align: center;
+}
+
+
+/* ======================================
+   FOOTER
+====================================== */
+
+footer {
+  margin-top: auto;
+  padding-top: 44px;
+
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
+
+/* ======================================
+   ACCESSIBILITY
+====================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .mo-menu-card,
+  .energy-card {
+    transition: none;
+  }
+}
+
