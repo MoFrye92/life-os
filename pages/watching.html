@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#121312">
+  <title>What We Watching? | MO OS</title>
+  <link rel="stylesheet" href="../css/watching.css">
+  <script src="../js/watch-data.js" defer></script>
+  <script src="../js/watching.js" defer></script>
+</head>
+<body>
+  <main class="watch-app">
+    <header class="topbar">
+      <a href="../index.html" class="back-link">← MO OS</a>
+      <span class="wordmark">MO OS.</span>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <p class="eyebrow">MO OS / VIBE</p>
+      <h1 id="page-title">What We <span>Watching?</span></h1>
+      <p class="subtitle">Comfort watches, cult favorites, and your next obsession. No endless scrolling.</p>
+      <div class="services" aria-label="Your streaming subscriptions">
+        <span class="services-label">Your apps</span>
+        <span>Netflix</span><span>Hulu</span><span>Prime Video</span><span>Disney+</span>
+      </div>
+      <p class="availability-note">We’ll help you choose. Tap <strong>Where to watch</strong> to check current availability; titles aren't guaranteed on these services.</p>
+    </section>
+
+    <nav class="main-tabs" aria-label="Watch library sections">
+      <button type="button" class="main-tab" data-view="safe-movies" aria-pressed="false">🎬 Safe Movies <span id="safe-movie-count">0</span></button>
+      <button type="button" class="main-tab" data-view="safe-shows" aria-pressed="false">📺 Safe Shows <span id="safe-show-count">0</span></button>
+      <button type="button" class="main-tab is-active" data-view="discover" aria-pressed="true">✨ Discover <span>50</span></button>
+    </nav>
+
+    <section class="library-section" aria-labelledby="list-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow" id="section-eyebrow">CURATED FOR YOU</p>
+          <h2 id="list-heading">50 things worth watching</h2>
+          <p id="list-description" class="section-description">A starter list inspired by Marvel, Black stories, queer romance, anime, thrillers, creative reality, and cult classics.</p>
+        </div>
+      </div>
+
+      <div class="safe-actions" id="safe-actions" hidden>
+        <button type="button" id="add-favorite" class="outlined-button">+ Add a favorite</button>
+        <p class="mini-note">Your safe shelf is personal. Add titles you love rewatching.</p>
+      </div>
+
+      <div class="discover-controls" id="discover-controls">
+        <div class="type-tabs" role="group" aria-label="Movie or show filter">
+          <button class="type-tab is-active" data-kind="all" aria-pressed="true" type="button">All</button>
+          <button class="type-tab" data-kind="movie" aria-pressed="false" type="button">Movies</button>
+          <button class="type-tab" data-kind="show" aria-pressed="false" type="button">Shows</button>
+        </div>
+        <div class="filters-row">
+          <label class="visually-hidden" for="genre-filter">Filter by genre or vibe</label>
+          <select id="genre-filter" aria-label="Genre or vibe"><option value="all">All vibes</option></select>
+          <label class="visually-hidden" for="title-search">Search titles</label>
+          <input id="title-search" type="search" placeholder="Search a title…" autocomplete="off" aria-label="Search titles">
+        </div>
+        <div class="toolbar-bottom">
+          <label class="checkbox-label"><input id="hide-watched" type="checkbox"> Hide watched</label>
+          <button type="button" id="surprise-me" class="surprise-button">🎲 Pick for me</button>
+        </div>
+      </div>
+
+      <div class="list-meta"><span id="result-count" aria-live="polite"></span></div>
+      <div id="poster-grid" class="poster-grid"></div>
+      <button type="button" class="show-more" id="show-more" hidden>Show more titles</button>
+    </section>
+
+    <footer>Built by Mo. For real life. 🍿</footer>
+  </main>
+
+  <dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title">
+    <button type="button" id="close-detail" class="close-dialog" aria-label="Close details">✕</button>
+    <div id="detail-content"></div>
+  </dialog>
+
+  <dialog id="add-dialog" class="add-dialog" aria-labelledby="add-title">
+    <button type="button" id="close-add" class="close-dialog" aria-label="Close add title form">✕</button>
+    <h2 id="add-title">Add your safe pick</h2>
+    <p class="section-description">Got a comfort watch that isn't in the 50? Add it here.</p>
+    <form id="add-form">
+      <label for="custom-name">Movie or show title</label>
+      <input id="custom-name" required maxlength="120" autocomplete="off" placeholder="e.g. Your favorite rewatch">
+      <label for="custom-type">Type</label>
+      <select id="custom-type"><option value="movie">Movie</option><option value="show">TV show</option></select>
+      <label for="custom-year">Release year (optional)</label>
+      <input id="custom-year" type="number" min="1900" max="2100" placeholder="e.g. 2005">
+      <button class="submit-button" type="submit">Add to my safe shelf</button>
+    </form>
+  </dialog>
+</body>
+</html>

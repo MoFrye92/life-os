@@ -1,6 +1,6 @@
 /* ==========================================
-   MO OS | MENU CATALOG
-   Version 0.6
+   MO OS | MENU CATALOG | Version 0.7
+   Only 'What We Watching?' is newly connected.
 ========================================== */
 
 const moMenus = [
@@ -16,7 +16,7 @@ const moMenus = [
   { id: "music", title: "Set the Mood", icon: "🎧", group: "VIBE",
     description: "Let MO OS find your soundtrack.", path: "pages/music.html" },
   { id: "watching", title: "What We Watching?", icon: "🍿", group: "VIBE",
-    description: "Movies, shows, and something worth watching." },
+    description: "Comfort watches, cult favorites, and new discoveries.", path: "pages/watching.html" },
   { id: "outside", title: "Get Out the House", icon: "🚗", group: "VIBE",
     description: "Go somewhere. Do something. Make memories." },
   { id: "creative", title: "Creative Roulette", icon: "📸", group: "VIBE",
