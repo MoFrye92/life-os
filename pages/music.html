@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#121312">
+  <title>Set the Mood | MO OS</title>
+  <link rel="stylesheet" href="../css/music.css">
+  <script src="../js/music-data.js" defer></script>
+  <script src="../js/music.js" defer></script>
+</head>
+<body>
+  <main class="music-app">
+    <header class="topbar">
+      <a href="../index.html" class="back-link">← MO OS</a>
+      <span class="brand">MO OS.</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">MO OS / VIBE</p>
+      <h1>Set the Mood<span class="accent">.</span></h1>
+      <p class="subtitle">Tell me the vibe. I'll find your soundtrack.</p>
+    </section>
+
+    <section class="quiz-section" aria-labelledby="quiz-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">THE VIBE CHECK</p>
+          <h2 id="quiz-heading">Three quick questions.</h2>
+        </div>
+        <span class="little-pill">🎧 YOU PICK</span>
+      </div>
+
+      <div id="music-questions"></div>
+
+      <button id="suggest-music" class="primary-button" type="button" disabled>
+        ✨ Find my vibe
+      </button>
+      <p id="quiz-hint" class="quiz-hint" role="status">Answer all three to get your pick.</p>
+    </section>
+
+    <section id="music-result" class="result-card" aria-labelledby="result-title" hidden>
+      <p class="eyebrow">YOUR MOOD, YOUR SOUNDTRACK</p>
+      <div id="result-art" class="result-art" aria-hidden="true">🎶</div>
+      <h2 id="result-title">Your genre</h2>
+      <p id="result-tagline" class="result-tagline"></p>
+      <p id="result-why" class="result-why"></p>
+      <a id="listen-link" class="primary-button listen-link" href="https://music.apple.com/us/" rel="noopener noreferrer">♫ Open in Apple Music ↗</a>
+      <button id="try-another" class="secondary-button" type="button">🎲 Try another genre</button>
+    </section>
+
+    <section class="browse-section" aria-labelledby="browse-heading">
+      <p class="eyebrow">OR SKIP THE QUESTIONS</p>
+      <h2 id="browse-heading">I already know the vibe.</h2>
+      <p class="section-note">Tap a genre to search for it in Apple Music.</p>
+      <div id="genre-grid" class="genre-grid"></div>
+    </section>
+
+    <footer>Whatever the mood, there's music for it.</footer>
+  </main>
+</body>
+</html>
