@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111715">
+
+  <title>Life OS | I'm Bored</title>
+
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/app.js" defer></script>
+</head>
+
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-icon">✳</span>
+        <span>LIFE OS</span>
+      </div>
+      <span class="version">v0.1</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">YOUR DOWNTIME, YOUR WAY</p>
+      <h1>I'm Bored<span class="accent">.</span></h1>
+      <p class="subtitle">
+        No overthinking. Let's find something
+        that matches your energy.
+      </p>
+    </section>
+
+    <section class="energy-section">
+      <h2>How's your energy?</h2>
+      <p class="section-description">
+        Pick whatever feels right today.
+      </p>
+
+      <div class="energy-grid">
+        <button class="energy-card low"
+                data-energy="Low"
+                aria-pressed="false">
+          <span class="emoji">🪫</span>
+          <span class="energy-name">Low</span>
+          <span class="energy-note">Rest & recharge</span>
+        </button>
+
+        <button class="energy-card medium"
+                data-energy="Medium"
+                aria-pressed="false">
+          <span class="emoji">🔋</span>
+          <span class="energy-name">Medium</span>
+          <span class="energy-note">Create & play</span>
+        </button>
+
+        <button class="energy-card high"
+                data-energy="High"
+                aria-pressed="false">
+          <span class="emoji">⚡</span>
+          <span class="energy-name">High</span>
+          <span class="energy-note">Get moving</span>
+        </button>
+      </div>
+
+      <p id="selection" class="selection" role="status">
+        Choose an energy level to begin.
+      </p>
+    </section>
+
+    <footer>Made for my brain. Built by me. ✳</footer>
+  </main>
+</body>
+</html>
